@@ -21,13 +21,15 @@ public class Solution155 {
 
     /** initialize your data structure here. */
     public Solution155() {
-        this.stack = new Stack<Integer>();
-        this.minStack = new Stack<Integer>();
+        this.stack = new Stack<>();
+        this.minStack = new Stack<>();
     }
 
     // push的时候就要同时对minStack操作
     public void push(int x) {
+        // 先压入普通栈
         stack.push(x);
+        // 如果minStack为空，或者顶部元素大于当前值，就压入minStack
         if (minStack.isEmpty() || x<=minStack.peek()){
             minStack.push(x);
         }
@@ -37,6 +39,7 @@ public class Solution155 {
     // 这里的注意点是取出来的是一个对象，不能单纯的用==进行比较，需要用A.equals(B)来比较
     public void pop() {
         Integer pop = stack.pop();
+        // 如果stack中弹出的元素跟minStack一样，那么minStack也需要弹出来
         if (pop.equals(minStack.peek())){
             minStack.pop();
         }

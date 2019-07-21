@@ -1,4 +1,4 @@
-package tree;
+package tree.recursion;
 
 /**
  * @ClassName Solution104
@@ -12,7 +12,7 @@ package tree;
  * 二叉树的深度为根节点到最远叶子节点的最长路径上的节点数。
  */
 public class Solution104 {
-    // 最简单直观的方法就是递归，但是效率好像不是特别高
+    // 最简单直观的方法就是递归，但是效率好像不是特别高(左子树和右子树的max+1即可)
     // 还可以用迭代来完成
     public int maxDepth(TreeNode root) {
         if (root == null) return 0;

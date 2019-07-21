@@ -19,6 +19,12 @@ package String;
  * 输出: 28
  */
 public class Solution171 {
+    public static void main(String[] args) {
+        Solution171 solution171 = new Solution171();
+        int titleToNumber = solution171.titleToNumber("AAA");
+        System.out.println(titleToNumber);
+    }
+
     public int titleToNumber(String s) {
         final int length = s.length();
         if (length==0) return 0;

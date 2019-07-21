@@ -1,4 +1,4 @@
-package tree;
+package tree.traversal;
 
 /**
  * @ClassName Solution101

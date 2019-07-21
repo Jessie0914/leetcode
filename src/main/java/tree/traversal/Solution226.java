@@ -1,4 +1,4 @@
-package tree;
+package tree.traversal;
 
 /**
  * @ClassName Solution226
@@ -7,7 +7,6 @@ package tree;
  * @Date 2019/6/27 20:14
  **/
 
-import com.sun.xml.internal.ws.client.sei.ResponseBuilder;
 
 /**
  * 题目要求：
@@ -34,7 +33,7 @@ public class Solution226 {
         return root;
     }
 
-    // 和上面的思想都是一样的，不过就是顺序颠倒一下，比我的要简洁
+    // 另外一种方法，和上面的思想都是一样的，不过就是顺序颠倒一下，比我的要简洁
     public TreeNode invertTree2(TreeNode root) {
         if (root == null) return null;
 

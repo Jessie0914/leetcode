@@ -10,7 +10,7 @@ public class Solution20 {
 
     // 初始化这个hashMap
     public Solution20(){
-        this.mappings = new HashMap<Character,Character>();
+        this.mappings = new HashMap<>();
         mappings.put(')','(');
         mappings.put(']','[');
         mappings.put('}','{');
@@ -27,9 +27,8 @@ public class Solution20 {
 
             // 如果这个字符在hashmap的key中（即这个是一个闭括号）
             if (this.mappings.containsKey(c)){
-                // 取栈顶元素
+                // 取栈顶元素（取之前先判空）
                 char topElement = characterStack.empty() ? '#' : characterStack.pop();
-
                 // 如果闭括号和当前栈顶元素不匹配，就可以直接判断为false了
                 if (topElement != this.mappings.get(c)){
                     return false;
