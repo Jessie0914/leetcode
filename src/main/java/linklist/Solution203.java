@@ -46,13 +46,19 @@ public class Solution203 {
         ListNode currentNode = dummyNode;
         // 遍历
         while (currentNode.next!=null){
+            // 找到了目标节点
             if (currentNode.next.val==val){
+                // 目标节点已经不是最后一个节点
                 if (currentNode.next.next!=null){
                     currentNode.next = currentNode.next.next;
-                }else {
+                }
+                // 目标节点是最后一个结点
+                else {
                     currentNode.next = null;
                 }
-            }else {
+            }
+            // 没有找到目标节点就往后移动
+            else {
                 currentNode = currentNode.next;
             }
         }

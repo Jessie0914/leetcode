@@ -37,6 +37,8 @@ public class Solution92 {
 
         // 下面是翻转操作，一共反转m-n+1个结点
         // 在反转的时候，也不断的更新head，head永远当前还没有被操作到的那个结点
+        // 先保存head的next结点为nextNode，因为head要和preNode相连，之后的结点会断掉
+        // head与preNode相连之后，更新head为新的preNode，以及nextNode为新的head
         // 最后的preNode就是反转后的头结点
         ListNode preNode = null;
         while (index<=n){

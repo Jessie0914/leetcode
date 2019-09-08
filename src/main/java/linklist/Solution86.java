@@ -7,11 +7,6 @@ package linklist;
  * @Date 2019/6/30 20:38
  **/
 
-import com.sun.org.apache.bcel.internal.generic.NEW;
-
-import java.util.Currency;
-import java.util.HashMap;
-
 /**
  * 题目要求：
  * 给定一个链表和一个特定值 x，对链表进行分隔，使得所有小于 x 的节点都在大于或等于 x 的节点之前。

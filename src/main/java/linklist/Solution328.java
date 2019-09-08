@@ -7,8 +7,6 @@ package linklist;
  * @Date 2019/6/30 16:43
  **/
 
-import org.omg.CORBA.Environment;
-
 /**
  * 题目要求：
  * 给定一个单链表，把所有的奇数节点和偶数节点分别排在一起。
@@ -42,11 +40,14 @@ public class Solution328 {
                 even.next = head;
                 even = even.next;
             }
+            // 回看这一段代码，不大懂为什么要将head.next置空，觉得题目也没有要求。。。
+            // 直接head = head.next不就可以了吗
             ListNode tmp = head.next;
             head.next = null;
             head = tmp;
             index++;
         }
+        // 将奇偶链表连接起来
         odd.next = evenDummy.next;
         return oddDummy.next;
     }

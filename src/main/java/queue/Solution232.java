@@ -18,6 +18,7 @@ import java.util.Stack;
  * empty() -- 返回队列是否为空。
  */
 public class Solution232 {
+    // 用两个栈实现即可，tmp为辅助栈
     Stack<Integer> stack;
     Stack<Integer> tmp;
 
@@ -29,10 +30,12 @@ public class Solution232 {
 
     /** Push element x to the back of queue. */
     public void push(int x) {
+        // 把stack中的所有元素都先暂存在tmp中，再加入当前元素
         while (!stack.isEmpty()){
             tmp.push(stack.pop());
         }
         tmp.push(x);
+        // 再一个一个推入到stack中，就是一样的效果
         while (!tmp.isEmpty()){
             stack.push(tmp.pop());
         }

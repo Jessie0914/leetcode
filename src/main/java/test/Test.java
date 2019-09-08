@@ -9,17 +9,8 @@ package test;
 
 public class Test {
     public static void main(String[] args) {
-        int[] a = {1,2};
+        System.out.println(Math.sqrt(14));
     }
 
-    public void reverse(int[] nums, int start, int end){
-        while (start<end){
-            int temp = nums[start];
-            nums[start] = nums[end];
-            nums[end] = temp;
-            start++;
-            end--;
-        }
-    }
 
 }

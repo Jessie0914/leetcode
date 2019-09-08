@@ -35,7 +35,7 @@ public class Solution21 {
         head.next = currentNode;
 
         // 不加这一段，[][]的测试用例通不过
-        // 应该返回[]，但如果不加的话会返回[0]
+        // 应该返回[]，但如果不加的话会返回[0]，应该特判
         if (l1==null&&l2==null){
             return null;
         }

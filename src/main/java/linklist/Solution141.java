@@ -50,6 +50,8 @@ public class Solution141 {
         ListNode slow = head;
         ListNode fast = head.next;
 
+        // 如果链表里有环，那么快指针一定会追上慢指针
+        // 如果链表里面没有环，那么快指针一定会很快就到达尾部
         while (slow!=fast){
             if (fast==null || fast.next==null){
                 return false;
