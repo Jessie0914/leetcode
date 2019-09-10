@@ -18,7 +18,7 @@ package String;
 
 // 思路是从前往后，当前元素和前一个元素相同的话，就往后找一个不一样的，然后交换
 public class Solution767 {
-    // case过不了，思路错了，上述思路比如说"baaba"就会出错
+    // case过不了，思路错了，上述思路比如说"baaba"就会出错。
     public String reorganizeString(String S) {
         int length = S.length();
         if (length==0 || length==1) return S;
