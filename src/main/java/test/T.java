@@ -8,8 +8,20 @@ package test;
  **/
 public class T {
     public static void main(String[] args) {
-        char[] data = {'/','/','b'};
-        String s = String.valueOf(data, 2, 2);
-        System.out.println(s);
+        int x=9999;
+        int count = func(x);
+        System.out.println(count);
     }
+
+    private static int func(int x) {
+        int count = 0;
+        x = 9999;
+        while (x>0){
+            count++;
+            x = x&(x-1);
+        }
+        return count;
+    }
+
+
 }

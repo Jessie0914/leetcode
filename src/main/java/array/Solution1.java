@@ -26,6 +26,6 @@ public class Solution1 {
                 }
             }
         }
-        return result;
+        return new int[]{-1,-1};
     }
 }
