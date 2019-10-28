@@ -1,5 +1,9 @@
 package array;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @ClassName Solution525
  * @Description 525. 连续数组
@@ -8,36 +12,46 @@ package array;
  **/
 public class Solution525 {
     public int findMaxLength(int[] nums) {
-        return dfs(0,nums.length-1,nums);
+        int n = nums.length;
+        int[] counts = new int[2 * n + 1];
+        Arrays.fill(counts,-2);
+        // 初试化，折线图中的原点
+        // 也就是value为0第一次出现的下标在nums[0]之前，就初始化为-1.
+        counts[n] = -1;
+        int maxLen = 0;
+        int value = 0;
+        for (int i=0;i<nums.length;i++){
+            if (nums[i]==0)
+                value -= 1;
+            else
+                value += 1;
+
+            // 说明不是第一次出现，那么就需要对比
+            if (counts[value+n]>-2){
+                maxLen = Math.max(maxLen,i-counts[value+n]);
+            }
+            else
+                counts[value+n] = i;
+        }
+
+        return maxLen;
     }
 
-    private int dfs(int i, int j, int[] nums) {
-        int count_zero = 0;
-        int count_one = 0;
-        for (int k=i;k<=j;k++){
-            if (nums[k]==0)
-                count_zero++;
-            else
-                count_one++;
-        }
-        if (count_one==count_zero)
-            return j-i+1;
-        else {
-            int len1 = Integer.MAX_VALUE;
-            int len2 = Integer.MAX_VALUE;
-            int i1 = i,j1= j;
-            int i2 = i,j2 = j;
-            if (i+1<nums.length){
-                len1 = dfs(i1+1,j1,nums);
-            }
-            if (j-1>=0){
-                len2 = dfs(i2,j2-1,nums);
-            }
+    public int findMaxLength2(int[] nums){
+        Map<Integer, Integer> hashMap = new HashMap<>();
+        hashMap.put(0,-1);
+        int maxLen = 0;
+        int value = 0;
+        for (int i=0;i<nums.length;i++){
+            value = value + (nums[i]==1?1:-1);
 
-            if (len1==Integer.MAX_VALUE&&len2==Integer.MAX_VALUE)
-                return 0;
-            else
-                return Math.min(len1,len2);
+            if (hashMap.containsKey(value)){
+                maxLen = Math.max(maxLen,i-hashMap.get(value));
+            }
+            else {
+                hashMap.put(value,i);
+            }
         }
+        return maxLen;
     }
 }
