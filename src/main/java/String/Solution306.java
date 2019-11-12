@@ -23,7 +23,7 @@ public class Solution306 {
         int len = num.length();
         if (len<3) return false;
         // 比如说长度为5，那么第一个数最多为2；长度为6，第一个长度最多也是为2。所以长度最多为(len-1)/2
-        // 第一个数的长度必定在1~(len-1)/2之间，从0开始，到i结束（不包括i）
+        // 第一个数的长度必定在1~(len-1)/2之间，从0开始，到i结束（subString函数不包括右端点）
         for (int i=1;i<=(num.length()-1)/2;i++){
             String s1 = num.substring(0, i);
             // 如果说长度>1并且以0开头，才是无效的。（注意如果长度==1，不能判为无效，比如说0）

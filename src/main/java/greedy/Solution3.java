@@ -2,7 +2,7 @@ package greedy;
 
 /**
  * @ClassName Solution3
- * @Description 3.无重复字符的最长子串
+ * @Description 3. 无重复字符的最长子串
  * @Author shishi
  * @Date 2019/6/28 13:59
  **/

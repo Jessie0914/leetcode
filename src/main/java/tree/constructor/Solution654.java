@@ -27,6 +27,7 @@ public class Solution654 {
 
         root.left = construct(nums,start,maxIndex-1);
         root.right = construct(nums,maxIndex+1,end);
+
         return root;
     }
 

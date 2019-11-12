@@ -27,7 +27,7 @@ public class Solution767_3 {
             }
         }
         boolean flag = true;
-        if ((max*2)-1>length){
+        if (max>(length+1)/2){
             flag = false;
         }
 
@@ -39,11 +39,14 @@ public class Solution767_3 {
         }
         else {
             for (int i=0;i<26;i++){
+                // 如果当前元素的个数小于一半的话，就把它放在奇数位
                 while (nums[i]>0 && nums[i]<length/2+1 && odd<length){
                     result[odd] = (char) (i+'a');
                     nums[i]--;
                     odd+=2;
                 }
+                // 如果当前元素超过一半存放在偶数为
+                // 如果当前元素也小于一半，但是奇数位已经越界了，就也放在偶数位
                 while (nums[i]>0&&even<length){
                     result[even] = (char)(i+'a');
                     nums[i]--;

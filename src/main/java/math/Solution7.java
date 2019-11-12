@@ -33,7 +33,7 @@ public class Solution7 {
             // 处理溢出的部分
             // 在将新的数加入到原本的后面的时候，先判断是否溢出
             // 判断的方式也比较简洁
-            if (reverseNum>Integer.MAX_VALUE/10 || (reverseNum==Integer.MAX_VALUE&&temp>=7)){
+            if (reverseNum>Integer.MAX_VALUE/10 || (reverseNum == Integer.MAX_VALUE && temp>7)){
                 return 0;
             }
             // 负数的判断方法是一样的

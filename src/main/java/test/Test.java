@@ -1,7 +1,5 @@
 package test;
 
-import java.util.Arrays;
-
 /**
  * @ClassName Test
  * @Description TODO
@@ -10,10 +8,8 @@ import java.util.Arrays;
  **/
 public class Test {
     public static void main(String[] args) {
-        String[] strings = {"1","2","3","10"};
-        Arrays.sort(strings);
-        for (int i=0;i<strings.length;i++){
-            System.out.println(strings[i]);
+        for (int i=0;i<100;i++){
+            System.out.print(i+", ");
         }
     }
 }
