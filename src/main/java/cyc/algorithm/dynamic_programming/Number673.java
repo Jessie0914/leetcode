@@ -27,29 +27,34 @@ public class Number673 {
 
         int[] dp = new int[length];
         int[] count = new int[length];
-        Arrays.fill(dp,1);
-        Arrays.fill(count,1);
+        Arrays.fill(dp, 1);
+        Arrays.fill(count, 1);
 
         int maxLen = dp[0];
         for (int i = 1; i < length; i++) {
             dp[i] = 1;
-            for (int j=0;j<i;j++){
-                if (nums[i]>nums[j]){
-                    if (dp[j]+1>dp[i]){
-                        dp[i] = dp[j]+1;
+            for (int j = 0; j < i; j++) {
+                if (nums[i] > nums[j]) {
+                    // 第一次遇到要更新dp[i]的情况
+                    // 就去把count[i]设置为count[j]一样
+                    if (dp[j] + 1 > dp[i]) {
+                        dp[i] = dp[j] + 1;
                         count[i] = count[j];
-                    }else if (dp[j]+1==dp[i]){
+                    }
+                    // 如果之后再遇到一样的情况，那么最起码也是第二次遇到了
+                    // count[i]要加上count[j]的数量
+                    else if (dp[j] + 1 == dp[i]) {
                         count[i] += count[j];
                     }
                 }
             }
-            maxLen = Math.max(dp[i],maxLen);
+            maxLen = Math.max(dp[i], maxLen);
         }
 
         int res = 0;
-        for (int i=0;i<length;i++){
-            if (dp[i]==maxLen){
-                res+=count[i];
+        for (int i = 0; i < length; i++) {
+            if (dp[i] == maxLen) {
+                res += count[i];
             }
         }
         return res;
