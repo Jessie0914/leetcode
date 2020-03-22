@@ -15,11 +15,11 @@ import java.util.List;
  * 题目要求：
  * 给定一个字符串 s 和一个非空字符串 p，找到 s 中所有是 p 的字母异位词的子串，返回这些子串的起始索引。
  * 字符串只包含小写英文字母，并且字符串 s 和 p 的长度都不超过 20100。
- *
+ * <p>
  * 示例：
  * 输入: s: "cbaebabacd" p: "abc"
  * 输出:[0, 6]
- *
+ * <p>
  * 输入: s: "abab" p: "ab"
  * 输出: [0, 1, 2]
  */
@@ -46,14 +46,13 @@ public class Solution438 {
         // 把字符串p的字母，放入needs的哈希表，代表需要匹配的数字
         // 这样一对比，C++确实好简洁啊，下面java一大坨代码，C++两行就可以
         //  for (char c : t) needs[c]++;
-        for (int i=0;i<p.length();i++){
+        for (int i = 0; i < p.length(); i++) {
             char c = p.charAt(i);
             Integer num = needs.get(c);
-            if (num==null){
-                needs.put(c,1);
-            }
-            else {
-                needs.put(c,num+1);
+            if (num == null) {
+                needs.put(c, 1);
+            } else {
+                needs.put(c, num + 1);
             }
         }
 
@@ -62,15 +61,15 @@ public class Solution438 {
         int match = 0;
 
         // 当右指针还没有到尽头就一直往右
-        while (right<s.length()){
+        while (right < s.length()) {
             char c = s.charAt(right);
             // 如果是needs哈希表里的字符，就把window窗口对应的数值++
-            if (needs.containsKey(c)){
+            if (needs.containsKey(c)) {
                 Integer num = window.get(c);
-                if (num==null){
-                    window.put(c,1);
-                }else {
-                    window.put(c,num+1);
+                if (num == null) {
+                    window.put(c, 1);
+                } else {
+                    window.put(c, num + 1);
                 }
 
                 // 然后判断有没有达到needs哈希表中对应字符该有的数量
@@ -82,23 +81,23 @@ public class Solution438 {
             right++;
 
             // 当发现已经满足要求了，就可以开始移动左指针left了
-            while (match == needs.size()){
+            while (match == needs.size()) {
                 // 题目要求的是字母异位词，所以需要当前找到的window和needs窗口的大小需要一样
                 // 如果符合，那么当前的left就是可行解，放入res数组
-                if (right-left==p.length()){
+                if (right - left == p.length()) {
                     res.add(left);
                 }
 
                 char c1 = s.charAt(left);
                 // 往右移动left之前，如果当前字符和needs有关，需要做一些操作
-                if (needs.containsKey(c1)){
+                if (needs.containsKey(c1)) {
                     int count = window.get(c1);
                     // 往右移动会减少一个有用的字符，所以数量--
-                    int currentCount = count-1;
-                    window.put(c1,currentCount);
+                    int currentCount = count - 1;
+                    window.put(c1, currentCount);
 
                     int neededCount = needs.get(c1);
-                    if (currentCount<neededCount){
+                    if (currentCount < neededCount) {
                         match--;
                     }
                 }

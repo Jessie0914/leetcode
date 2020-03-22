@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /**
  * @ClassName Test
  * @Description TODO
@@ -6,8 +8,8 @@
  **/
 public class Test {
     public static void main(String[] args) {
-        int i=12;
-        System.out.println(i+=i-=i*=i);
-        System.out.println("hdiuwqfuwei");
+        char[] s = {'e','a','t'};
+        Arrays.sort(s);
+        System.out.println(s);
     }
 }

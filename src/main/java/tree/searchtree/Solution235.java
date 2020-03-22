@@ -19,17 +19,17 @@ public class Solution235 {
     // ③当前节点的值大于max的值，说明需要往当前节点的左子树找最近公共祖先
     // 我这里用到的是递归的思想，还可以用迭代的方法
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        if (root==null) return null;
-        TreeNode min = p.val<q.val? p:q;
-        TreeNode max = p.val>q.val? p:q;
-        if (root.val>=min.val && root.val<=max.val)
+        if (root == null) return null;
+        TreeNode min = p.val < q.val ? p : q;
+        TreeNode max = p.val > q.val ? p : q;
+        if (root.val >= min.val && root.val <= max.val)
             return root;
         else {
-            if (root.val>=max.val){
-                return lowestCommonAncestor(root.left,p,q);
+            if (root.val >= max.val) {
+                return lowestCommonAncestor(root.left, p, q);
             }
-            if (root.val<=min.val){
-                return lowestCommonAncestor(root.right,p,q);
+            if (root.val <= min.val) {
+                return lowestCommonAncestor(root.right, p, q);
             }
         }
         return null;
@@ -37,9 +37,9 @@ public class Solution235 {
 
     // 迭代的方法（提交之后发现比递归的效率还低？？）
     public TreeNode lowestCommonAncestor2(TreeNode root, TreeNode p, TreeNode q) {
-        while (root!=null){
-            if (Math.max(p.val,q.val)<root.val) root = root.left;
-            else if (Math.min(p.val,q.val)>root.val) root = root.right;
+        while (root != null) {
+            if (Math.max(p.val, q.val) < root.val) root = root.left;
+            else if (Math.min(p.val, q.val) > root.val) root = root.right;
             else return root;
         }
         return null;

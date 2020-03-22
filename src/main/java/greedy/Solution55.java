@@ -7,19 +7,17 @@ package greedy;
  * @Date 2019/7/1 19:38
  **/
 
-import java.lang.management.ManagementFactory;
-
 /**
  * 题目要求：
  * 给定一个非负整数数组，你最初位于数组的第一个位置。
  * 数组中的每个元素代表你在该位置可以跳跃的最大长度。
  * 判断你是否能够到达最后一个位置。
- *
+ * <p>
  * 示例：
  * 输入: [2,3,1,1,4]
  * 输出: true
  * 解释: 从位置 0 到 1 跳 1 步, 然后跳 3 步到达最后一个位置。
- *
+ * <p>
  * 输入: [3,2,1,0,4]
  * 输出: false
  * 解释: 无论怎样，你总会到达索引为 3 的位置。但该位置的最大跳跃长度是 0 ， 所以你永远不可能到达最后一个位置。
@@ -31,10 +29,10 @@ public class Solution55 {
     // 要注意的一个是：i<maxReach这个条件，当maxReach已经在i的左侧的时候，就说明它只能达到maxReach的地方了，这时候i再往前走也没有意义了，中间断掉了
     public boolean canJump(int[] nums) {
         int maxReach = 1;
-        for (int i=0;i<maxReach&&maxReach<nums.length;i++){
-            maxReach = Math.max(maxReach,nums[i]+i+1);
+        for (int i = 0; i < maxReach && maxReach < nums.length; i++) {
+            maxReach = Math.max(maxReach, nums[i] + i + 1);
         }
-        if (maxReach>=nums.length)
+        if (maxReach >= nums.length)
             return true;
         else
             return false;

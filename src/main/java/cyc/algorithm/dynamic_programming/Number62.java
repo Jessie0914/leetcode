@@ -13,14 +13,14 @@ public class Number62 {
         dp[0][0] = 1;
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
-                if (i==0&&j==0) continue;
+                if (i == 0 && j == 0) continue;
 
-                int s1=0,s2=0;
-                if (j-1>=0) s1 = dp[i][j-1];
-                if (i-1>=0) s2 = dp[i-1][j];
-                dp[i][j] = s1+s2;
+                int s1 = 0, s2 = 0;
+                if (j - 1 >= 0) s1 = dp[i][j - 1];
+                if (i - 1 >= 0) s2 = dp[i - 1][j];
+                dp[i][j] = s1 + s2;
             }
         }
-        return dp[m-1][n-1];
+        return dp[m - 1][n - 1];
     }
 }

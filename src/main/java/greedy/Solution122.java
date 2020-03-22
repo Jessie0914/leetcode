@@ -11,11 +11,11 @@ package greedy;
  * 题目要求：
  * 给定一个数组，它的第 i 个元素是一支给定股票第 i 天的价格。
  * 设计一个算法来计算你所能获取的最大利润。你可以尽可能地完成更多的交易（多次买卖一支股票）。
- *
+ * <p>
  * 示例：
  * 输入: [7,1,5,3,6,4]
  * 输出: 7
- *
+ * <p>
  * 输入: [1,2,3,4,5]
  * 输出: 4
  */
@@ -30,7 +30,7 @@ public class Solution122 {
      * 我一开始的想法是用动态规划，dp[i]=max{dp[i-1],dp[i-2]-(dp[length-2]-dp[length-1])},但感觉好像不大行
      */
     public int maxProfit(int[] prices) {
-        if (prices.length == 0){
+        if (prices.length == 0) {
             return 0;
         }
 
@@ -38,19 +38,19 @@ public class Solution122 {
         int valley = prices[0];
         int peak = prices[0];
 
-        int i=0;
-        while (i < prices.length-1){
-            while (i<prices.length-1 && prices[i]>=prices[i+1]){
+        int i = 0;
+        while (i < prices.length - 1) {
+            while (i < prices.length - 1 && prices[i] >= prices[i + 1]) {
                 i++;
             }
             valley = prices[i];
 
-            while (i<prices.length-1 && prices[i]<=prices[i+1]){
+            while (i < prices.length - 1 && prices[i] <= prices[i + 1]) {
                 i++;
             }
             peak = prices[i];
 
-            profit += peak-valley;
+            profit += peak - valley;
         }
 
         return profit;

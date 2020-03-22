@@ -1,4 +1,5 @@
 import org.junit.Test;
+import other.Solution756;
 
 import java.util.ArrayList;
 import java.util.List;

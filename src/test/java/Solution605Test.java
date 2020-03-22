@@ -1,4 +1,5 @@
 import org.junit.Test;
+import other.Solution605;
 
 public class Solution605Test {
 
