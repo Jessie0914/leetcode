@@ -40,10 +40,13 @@ public class Solution46 {
         }
         for (int i=0;i<nums.length;i++){
             // 如果当前数字没有加入到pre中，就加入
-            if (used[i]==false){
+            if (!used[i]){
                 pre.add(nums[i]);
                 used[i]=true;
+
                 dfs(result,pre,nums,used);
+
+                // 回退一步
                 pre.remove(pre.size()-1);
                 used[i]=false;
             }
