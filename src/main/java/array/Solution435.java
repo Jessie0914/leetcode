@@ -15,11 +15,11 @@ import java.util.Comparator;
  * 输入: [ [1,2], [2,3], [3,4], [1,3] ]
  * 输出: 1
  * 解释: 移除 [1,3] 后，剩下的区间没有重叠。
- *
+ * <p>
  * 输入: [ [1,2], [1,2], [1,2] ]
  * 输出: 2
  * 解释: 你需要移除两个 [1,2] 来使剩下的区间没有重叠。
- *
+ * <p>
  * 输入: [ [1,2], [2,3] ]
  * 输出: 0
  * 解释: 你不需要移除任何区间，因为它们已经是无重叠的了。
@@ -30,16 +30,16 @@ public class Solution435 {
         Arrays.sort(intervals, new Comparator<int[]>() {
             @Override
             public int compare(int[] o1, int[] o2) {
-                return o1[1]-o2[1];
+                return o1[1] - o2[1];
             }
         });
         int count = 0;
         // 一直取end最小的一个
-        int i=0;
-        while (i<intervals.length){
-            int j=i+1;
+        int i = 0;
+        while (i < intervals.length) {
+            int j = i + 1;
             // 只要start比i的end小就会冲突
-            while (j<intervals.length&&intervals[j][0]<intervals[i][1]){
+            while (j < intervals.length && intervals[j][0] < intervals[i][1]) {
                 count++;
                 j++;
             }

@@ -25,7 +25,7 @@ public class Solutoin994 {
         int R = grid.length;
         int C = grid[0].length;
 
-        // 遍历二维数组，把初试就腐烂的橘子的编号存储在队列中（初试腐烂橘子的深度为0）
+        // 遍历二维数组，把初始就腐烂的橘子的编号存储在队列中（初试腐烂橘子的深度为0）
         Queue<Integer> queue = new ArrayDeque<>();
         // 这个map是存储，腐烂的橘子的编号以及它对应的深度
         Map<Integer, Integer> depthMap = new HashMap<>();

@@ -77,20 +77,20 @@ public class Number322 {
 
         // dp[i]代表总数为i的时候，最少的硬币数量
         int[] dp = new int[amount + 1];
-        Arrays.fill(dp,amount+1);
+        Arrays.fill(dp, amount + 1);
         dp[0] = 0;
 
         // 对于外循环，枚举每一个amount
-        for (int i=1;i<amount+1;i++){
+        for (int i = 1; i < amount + 1; i++) {
             // 对于内循环，枚举每一个物品，因为每一个物品都有选多次和不选的权利。
             // 是从前往后枚举的，因为需要保证求dp[j]的时候，dp[j-1]是最优选择，而dp[j-1]有权利选择第i个物品
-            for (int coin:coins){
-                if (i>=coin){
-                    dp[i] = Math.min(dp[i],dp[i-coin]+1);
+            for (int coin : coins) {
+                if (i >= coin) {
+                    dp[i] = Math.min(dp[i], dp[i - coin] + 1);
                 }
             }
         }
 
-        return dp[amount] == amount+1 ? -1 : dp[amount];
+        return dp[amount] == amount + 1 ? -1 : dp[amount];
     }
 }

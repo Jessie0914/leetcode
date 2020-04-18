@@ -18,13 +18,13 @@ public class Solution897 {
 
     // 根据中序遍历list，构造一个只有右子树的树
     public TreeNode increasingBST(TreeNode root) {
-        if (root==null) return null;
+        if (root == null) return null;
 
         List<Integer> inoderList = inorderTraverse(root);
         // 树根
         TreeNode node = new TreeNode(inoderList.get(0));
         TreeNode pre = node;
-        for (int i=1;i<inoderList.size();i++){
+        for (int i = 1; i < inoderList.size(); i++) {
             // 创建一个新节点
             TreeNode cur = new TreeNode(inoderList.get(i));
             // 和前面的连接起来
@@ -36,9 +36,9 @@ public class Solution897 {
     }
 
     // 中序遍历树根，返回一个中序遍历序列
-    private List<Integer> inorderTraverse(TreeNode root){
+    private List<Integer> inorderTraverse(TreeNode root) {
         List<Integer> list = new ArrayList<>();
-        if (root==null) return list;
+        if (root == null) return list;
         list.addAll(inorderTraverse(root.left));
         list.add(root.val);
         list.addAll(inorderTraverse(root.right));

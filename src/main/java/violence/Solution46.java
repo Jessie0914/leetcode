@@ -15,12 +15,12 @@ import java.util.List;
  * 输入: [1,2,3]
  * 输出:
  * [
- *   [1,2,3],
- *   [1,3,2],
- *   [2,1,3],
- *   [2,3,1],
- *   [3,1,2],
- *   [3,2,1]
+ * [1,2,3],
+ * [1,3,2],
+ * [2,1,3],
+ * [2,3,1],
+ * [3,1,2],
+ * [3,2,1]
  * ]
  */
 public class Solution46 {
@@ -29,26 +29,26 @@ public class Solution46 {
         List<List<Integer>> result = new ArrayList<>();
         List<Integer> pre = new ArrayList<>();
         boolean[] used = new boolean[nums.length];
-        dfs(result,pre,nums,used);
+        dfs(result, pre, nums, used);
         return result;
     }
 
     private void dfs(List<List<Integer>> result, List<Integer> pre, int[] nums, boolean[] used) {
-        if (pre.size()==nums.length){
+        if (pre.size() == nums.length) {
             result.add(new ArrayList<>(pre));
             return;
         }
-        for (int i=0;i<nums.length;i++){
+        for (int i = 0; i < nums.length; i++) {
             // 如果当前数字没有加入到pre中，就加入
-            if (!used[i]){
+            if (!used[i]) {
                 pre.add(nums[i]);
-                used[i]=true;
+                used[i] = true;
 
-                dfs(result,pre,nums,used);
+                dfs(result, pre, nums, used);
 
                 // 回退一步
-                pre.remove(pre.size()-1);
-                used[i]=false;
+                pre.remove(pre.size() - 1);
+                used[i] = false;
             }
         }
     }

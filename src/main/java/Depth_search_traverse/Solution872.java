@@ -32,8 +32,9 @@ public class Solution872 {
 
     public List<Integer> findAllLeaf(TreeNode root) {
         List<Integer> list = new ArrayList<>();
-        if (root==null) return list;
-        if (root.left==null&&root.right==null) list.add(root.val);
+        if (root == null) return list;
+        if (root.left == null && root.right == null)
+            list.add(root.val);
         list.addAll(findAllLeaf(root.left));
         list.addAll(findAllLeaf(root.right));
         return list;
