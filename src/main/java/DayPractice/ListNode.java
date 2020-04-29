@@ -1,4 +1,4 @@
-package DayPractice.March;
+package DayPractice;
 
 /**
  * @ClassName ListNode
@@ -7,7 +7,7 @@ package DayPractice.March;
  * @Date 2020/4/2 14:43
  **/
 public class ListNode {
-    int val;
-    ListNode next;
-    ListNode(int x) { val = x; }
+    public int val;
+    public ListNode next;
+    public ListNode(int x) { val = x; }
 }
