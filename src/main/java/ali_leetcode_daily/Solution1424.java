@@ -1,66 +1,87 @@
 package ali_leetcode_daily;
 
-import java.util.List;
+import java.util.*;
 
 /**
  * @ClassName Solution1424
- * @Description TODO
+ * @Description 对角线遍历2
  * @Author shishi
  * @Date 2020/6/19 22:21
  **/
 public class Solution1424 {
+    // https://leetcode-cn.com/problems/diagonal-traverse-ii/solution/treemapan-dui-jiao-xian-ju-he-zhi-by-zuo-zhou-ren/
+    // 巧用Map
     public int[] findDiagonalOrder(List<List<Integer>> nums) {
-        int[][] matrix = translate(nums);
-
-        if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
-            return null;
+        // 用来存放（对角线加起来的值，对应的list）
+        Map<Integer, List<Integer>> map = new TreeMap<>();
+        int count = 0;
+        for (int i = 0; i < nums.size(); i++) {
+            count += nums.get(i).size();
+            for (int j = 0; j < nums.get(i).size(); j++) {
+                if (map.containsKey(i + j)) {
+                    map.get(i + j).add(nums.get(i).get(j));
+                } else {
+                    List<Integer> list = new LinkedList<>();
+                    list.add(nums.get(i).get(j));
+                    map.put(i + j, list);
+                }
+            }
         }
 
-        int m = matrix.length;
-        int n = matrix[0].length;
-
+        int[] result = new int[count];
         int index = 0;
-        int[] res = new int[m * n];
+        Set<Integer> set = map.keySet();
+        Iterator<Integer> iterator = set.iterator();
+        while (iterator.hasNext()) {
+            Integer cur = iterator.next();
+            for (int i = map.get(cur).size() - 1; i >= 0; i--) {
+                result[index++] = map.get(cur).get(i);
+            }
+        }
 
-        // m行都遍历完
-        for (int k = 0; k < m; k++) {
-            int i = k;
+        return result;
+    }
+
+    // 这种没有办法通过“第一行很长，但是最后一行很短”的那种案例
+    public int[] findDiagonalOrder2(List<List<Integer>> nums) {
+        int m = nums.size();
+        int count = 0;
+        for (List<Integer> list : nums) {
+            count += list.size();
+        }
+        int[] res = new int[count];
+        int index = 0;
+
+        // 先遍历m行
+        for (int i = 0; i < m; i++) {
+            int curLine = i;
             int j = 0;
-            // 每一次只要不越界就可以
-            // 都是从下往上的
-            while (i >= 0 && j < n) {
-                res[index++] = matrix[i][j];
-                i--;
+            while (curLine >= 0) {
+                // 先要判断j有没有超出范围
+                if (j < nums.get(curLine).size()) {
+                    res[index++] = nums.get(curLine).get(j);
+                }
+
+                curLine--;
                 j++;
             }
         }
 
-        // 接下来遍历n列
-        for (int k = 1; k < n; k++) {
-            int i = m - 1;
-            int j = k;
-            while (i >= 0 && j < n) {
-                res[index++] = matrix[i][j];
-                i--;
+        // 遍历最后一行（最后一行的第一个已经遍历过）
+        for (int i = 1; i < nums.get(m - 1).size(); i++) {
+            int curLine = m - 1;
+            int j = i;
+            while (curLine >= 0) {
+                if (j < nums.get(curLine).size())
+                    res[index++] = nums.get(curLine).get(j);
+
+                curLine--;
                 j++;
             }
         }
 
         return res;
+
     }
 
-    private int[][] translate(List<List<Integer>> nums) {
-        int m = nums.size();
-        int n = nums.get(0).size();
-        int[][] matrix = new int[m][n];
-        int i = 0, j = 0;
-        for (List<Integer> list : nums) {
-            for (int num : list) {
-                matrix[i][j++] = num;
-            }
-            i++;
-            j = 0;
-        }
-        return matrix;
-    }
 }
