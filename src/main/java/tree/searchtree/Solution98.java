@@ -18,14 +18,14 @@ public class Solution98 {
     // 利用最大值、最小值(注意，这里的测试用例会超出Integer的范围，所以需要用Long)
     // 还有的方法是利用“中序遍历”，因为二叉搜索树的中序遍历一定是有序的
     public boolean isValidBST(TreeNode root) {
-        return isBST(root,Long.MIN_VALUE,Long.MAX_VALUE);
+        return isBST(root, Long.MIN_VALUE, Long.MAX_VALUE);
     }
 
     private boolean isBST(TreeNode root, long minValue, long maxValue) {
-        if (root==null) return true;
-        return root.val>minValue && root.val<maxValue
-                && isBST(root.left,minValue,root.val)
-                && isBST(root.right,root.val,maxValue);
+        if (root == null) return true;
+        return root.val > minValue && root.val < maxValue
+                && isBST(root.left, minValue, root.val)
+                && isBST(root.right, root.val, maxValue);
     }
 
 }

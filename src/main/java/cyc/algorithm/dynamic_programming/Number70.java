@@ -34,11 +34,11 @@ public class Number70 {
     // 动态规划
     // dp[i]表示到第i个阶梯有多少中方法
     public int climbStairs3(int n) {
-        int[] dp = new int[n+1];
+        int[] dp = new int[n + 1];
         dp[0] = 1;
         dp[1] = 1;
-        for (int i=2;i<=n;i++){
-            dp[i] = dp[i-1] +dp[i-2];
+        for (int i = 2; i <= n; i++) {
+            dp[i] = dp[i - 1] + dp[i - 2];
         }
         return dp[n];
     }
