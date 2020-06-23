@@ -35,8 +35,9 @@ public class Solution79 {
         Queue<int[]> queue = new LinkedList<>();
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[0].length; j++) {
-                if (board[i][j] == begin)
+                if (board[i][j] == begin) {
                     queue.offer(new int[]{i, j});
+                }
             }
         }
 
@@ -63,14 +64,17 @@ public class Solution79 {
                 int newY = y + dy[i];
 
                 // 如果越界，退出广搜
-                if (newX < 0 || newX >= m || newY < 0 || newY >= n)
+                if (newX < 0 || newX >= m || newY < 0 || newY >= n) {
                     continue;
+                }
 
-                if (board[newX][newY] != word.charAt(index))
+                if (board[newX][newY] != word.charAt(index)) {
                     continue;
+                }
 
-                if (index >= word.length())
+                if (index >= word.length()) {
                     return true;
+                }
 
                 index++;
             }
