@@ -7,9 +7,6 @@ package ali_leetcode_daily;
  * @Date 2020/6/22 22:10
  **/
 
-import java.util.LinkedList;
-import java.util.Queue;
-
 /**
  * https://leetcode-cn.com/problems/word-search/
  * 给定一个二维网格和一个单词，找出该单词是否存在于网格中。
@@ -27,56 +24,63 @@ import java.util.Queue;
  * 给定 word = "ABCB", 返回 false
  */
 public class Solution79 {
+    // 定义4个方向的数组
+    int[] dx = {0, 0, -1, 1};
+    int[] dy = {-1, 1, 0, 0};
+    int m;
+    int n;
+
     public boolean exist(char[][] board, String word) {
         if (word == null || word.length() == 0 || board == null || board.length == 0 || board[0].length == 0)
             return false;
 
-        char begin = word.charAt(0);
-        Queue<int[]> queue = new LinkedList<>();
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[0].length; j++) {
-                if (board[i][j] == begin)
-                    queue.offer(new int[]{i, j});
-            }
-        }
+        m = board.length;
+        n = board[0].length;
 
-        if (word.length() == 1 && queue.size() > 0)
-            return true;
+        boolean[][] used = new boolean[m][n];
 
-        int index = 1;
-        int m = board.length;
-        int n = board[0].length;
-
-        // 定义4个方向的数组
-        int[] dx = {-1, 1, 0, 0};
-        int[] dy = {0, 0, -1, 1};
-
-        while (!queue.isEmpty()) {
-            int k = index;
-            int[] poll = queue.poll();
-            // 当前陆地的坐标
-            int x = poll[0];
-            int y = poll[1];
-
-            for (int i = 0; i < 4; i++) {
-                int newX = x + dx[i];
-                int newY = y + dy[i];
-
-                // 如果越界，退出广搜
-                if (newX < 0 || newX >= m || newY < 0 || newY >= n)
-                    continue;
-
-                if (board[newX][newY] != word.charAt(index))
-                    continue;
-
-                if (index >= word.length())
+        // 对于每一个位置，都深搜一遍
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (dfs(board, word, used, i, j, 0)) {
                     return true;
-
-                index++;
+                }
             }
         }
 
+        return false;
+    }
 
-        return true;
+    // 深搜
+    private boolean dfs(char[][] board, String word, boolean[][] used, int i, int j, int index) {
+        // 成功的标志
+        if (index == word.length() - 1) {
+            return board[i][j] == word.charAt(index);
+        }
+
+        if (board[i][j] == word.charAt(index)) {
+            // 先标记
+            used[i][j] = true;
+
+            // 4个方向深搜
+            for (int k = 0; k < 4; k++) {
+                // 往前走一步
+                int newX = i + dx[k];
+                int newY = j + dy[k];
+                if (inArea(newX, newY) && !used[newX][newY]) {
+                    if (dfs(board, word, used, newX, newY, index + 1))
+                        return true;
+                }
+            }
+
+            // 退回
+            used[i][j] = false;
+        }
+
+        return false;
+    }
+
+    private boolean inArea(int i, int j) {
+        return i >= 0 && i < m && j >= 0 && j < n;
     }
 }

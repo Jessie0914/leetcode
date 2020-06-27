@@ -1,6 +1,8 @@
-package Depth_search_traverse;
+package ali_leetcode_daily;
 
 import org.junit.Test;
+
+import static org.junit.Assert.*;
 
 public class Solution130Test {
 
