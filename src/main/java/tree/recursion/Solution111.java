@@ -21,6 +21,6 @@ public class Solution111 {
         if (root.right != null && root.left == null) return minDepth(root.right);
 
         // 再把问题分成小模块的
-        return Math.min(minDepth(root.left),minDepth(root.right))+1;
+        return Math.min(minDepth(root.left), minDepth(root.right)) + 1;
     }
 }
