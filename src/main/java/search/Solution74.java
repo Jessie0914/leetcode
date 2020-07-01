@@ -1,7 +1,7 @@
 package search;
 
 /**
- * @ClassName Solution74
+ * @ClassName Solution72
  * @Description 74.搜索二维矩阵
  * @Author shishi
  * @Date 2019/7/13 20:14

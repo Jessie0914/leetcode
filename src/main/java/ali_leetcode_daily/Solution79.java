@@ -2,15 +2,15 @@ package ali_leetcode_daily;
 
 /**
  * @ClassName Solution79
- * @Description µ¥´ÊËÑË÷
+ * @Description å•è¯æœç´¢
  * @Author shishi
  * @Date 2020/6/22 22:10
  **/
 
 /**
  * https://leetcode-cn.com/problems/word-search/
- * ¸ø¶¨Ò»¸ö¶şÎ¬Íø¸ñºÍÒ»¸öµ¥´Ê£¬ÕÒ³ö¸Ãµ¥´ÊÊÇ·ñ´æÔÚÓÚÍø¸ñÖĞ¡£
- * µ¥´Ê±ØĞë°´ÕÕ×ÖÄ¸Ë³Ğò£¬Í¨¹ıÏàÁÚµÄµ¥Ôª¸ñÄÚµÄ×ÖÄ¸¹¹³É£¬ÆäÖĞ¡°ÏàÁÚ¡±µ¥Ôª¸ñÊÇÄÇĞ©Ë®Æ½ÏàÁÚ»ò´¹Ö±ÏàÁÚµÄµ¥Ôª¸ñ¡£Í¬Ò»¸öµ¥Ôª¸ñÄÚµÄ×ÖÄ¸²»ÔÊĞí±»ÖØ¸´Ê¹ÓÃ¡£
+ * ç»™å®šä¸€ä¸ªäºŒç»´ç½‘æ ¼å’Œä¸€ä¸ªå•è¯ï¼Œæ‰¾å‡ºè¯¥å•è¯æ˜¯å¦å­˜åœ¨äºç½‘æ ¼ä¸­ã€‚
+ * å•è¯å¿…é¡»æŒ‰ç…§å­—æ¯é¡ºåºï¼Œé€šè¿‡ç›¸é‚»çš„å•å…ƒæ ¼å†…çš„å­—æ¯æ„æˆï¼Œå…¶ä¸­â€œç›¸é‚»â€å•å…ƒæ ¼æ˜¯é‚£äº›æ°´å¹³ç›¸é‚»æˆ–å‚ç›´ç›¸é‚»çš„å•å…ƒæ ¼ã€‚åŒä¸€ä¸ªå•å…ƒæ ¼å†…çš„å­—æ¯ä¸å…è®¸è¢«é‡å¤ä½¿ç”¨ã€‚
  * <p>
  * board =
  * [
@@ -19,28 +19,27 @@ package ali_leetcode_daily;
  * ['A','D','E','E']
  * ]
  * <p>
- * ¸ø¶¨ word = "ABCCED", ·µ»Ø true
- * ¸ø¶¨ word = "SEE", ·µ»Ø true
- * ¸ø¶¨ word = "ABCB", ·µ»Ø false
+ * ç»™å®š word = "ABCCED", è¿”å› true
+ * ç»™å®š word = "SEE", è¿”å› true
+ * ç»™å®š word = "ABCB", è¿”å› false
  */
 public class Solution79 {
-    // ¶¨Òå4¸ö·½ÏòµÄÊı×é
+    // å®šä¹‰4ä¸ªæ–¹å‘çš„æ•°ç»„
     int[] dx = {0, 0, -1, 1};
     int[] dy = {-1, 1, 0, 0};
     int m;
     int n;
 
     public boolean exist(char[][] board, String word) {
-        if (word == null || word.length() == 0 || board == null || board.length == 0 || board[0].length == 0) {
+        if (word == null || word.length() == 0 || board == null || board.length == 0 || board[0].length == 0)
             return false;
-        }
 
         m = board.length;
         n = board[0].length;
 
         boolean[][] used = new boolean[m][n];
 
-        // ¶ÔÓÚÃ¿Ò»¸öÎ»ÖÃ£¬¶¼ÉîËÑÒ»±é
+        // å¯¹äºæ¯ä¸€ä¸ªä½ç½®ï¼Œéƒ½æ·±æœä¸€é
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 if (dfs(board, word, used, i, j, 0)) {
@@ -52,30 +51,29 @@ public class Solution79 {
         return false;
     }
 
-    // ÉîËÑ
+    // æ·±æœ
     private boolean dfs(char[][] board, String word, boolean[][] used, int i, int j, int index) {
-        // ³É¹¦µÄ±êÖ¾
+        // æˆåŠŸçš„æ ‡å¿—
         if (index == word.length() - 1) {
             return board[i][j] == word.charAt(index);
         }
 
         if (board[i][j] == word.charAt(index)) {
-            // ÏÈ±ê¼Ç
+            // å…ˆæ ‡è®°
             used[i][j] = true;
 
-            // 4¸ö·½ÏòÉîËÑ
+            // 4ä¸ªæ–¹å‘æ·±æœ
             for (int k = 0; k < 4; k++) {
-                // ÍùÇ°×ßÒ»²½
+                // å¾€å‰èµ°ä¸€æ­¥
                 int newX = i + dx[k];
                 int newY = j + dy[k];
                 if (inArea(newX, newY) && !used[newX][newY]) {
-                    if (dfs(board, word, used, newX, newY, index + 1)) {
+                    if (dfs(board, word, used, newX, newY, index + 1))
                         return true;
-                    }
                 }
             }
 
-            // ÍË»Ø
+            // é€€å›
             used[i][j] = false;
         }
 

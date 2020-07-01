@@ -41,9 +41,9 @@ public class Solution235 {
             return root;
 
         else if (left == null && right != null)
-            return lowestCommonAncestor2(root.right, p, q);
+            return right;
 
         else
-            return lowestCommonAncestor2(root.left, p, q);
+            return left;
     }
 }
