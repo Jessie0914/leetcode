@@ -62,8 +62,6 @@ public class Solution518 {
             for (int j = 1; j < amount + 1; j++) {
                 if (j - coins[i] >= 0)
                     dp[j] += dp[j - coins[i]];
-                else
-                    dp[j] = dp[j];
             }
         }
 

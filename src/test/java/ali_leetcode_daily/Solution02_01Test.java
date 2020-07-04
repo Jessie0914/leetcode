@@ -3,8 +3,6 @@ package ali_leetcode_daily;
 import day_practice.ListNode;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 public class Solution02_01Test {
 
     @Test
