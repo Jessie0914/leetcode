@@ -19,12 +19,13 @@ public class JZ17 {
             flag = judge(root1, root2);
         }
 
+        // 如果为false，则以left为起点，从头（不是递归函数，是从头）开始判断
         if (!flag) {
-            flag = judge(root1.left, root2);
+            flag = HasSubtree(root1.left, root2);
         }
 
         if (!flag) {
-            flag = judge(root1.right, root2);
+            flag = HasSubtree(root1.right, root2);
         }
 
         return flag;
