@@ -6,6 +6,7 @@ package jianzhi;
  * @Author shishi
  * @Date 2020/7/12 19:29
  **/
+// JZ_MARK
 public class JZ11 {
     // 作弊算法1：Integer.toBinaryString(n);
     public int NumberOf1(int n) {
