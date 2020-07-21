@@ -1,4 +1,4 @@
-package ali_leetcode_daily.dynamic_programming;
+package ali_leetcode_daily.dynamic_programming.string;
 
 /**
  * @ClassName Solution300

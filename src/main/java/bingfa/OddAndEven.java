@@ -7,6 +7,7 @@ package bingfa;
  * @Date 2020/3/13 16:13
  **/
 public class OddAndEven {
+    // 0的时候打印偶数，1的时候打印奇数
     static int state = 0;
     static int even = 0;
     static int odd = 1;

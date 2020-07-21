@@ -9,12 +9,17 @@ import java.util.Map;
  * @Author shishi
  * @Date 2020/6/22 21:25
  **/
+
+// 利用双向链表
 public class LRUCache {
     private int maxSize;
     private Node head;
     private Node tail;
+
+    // map存储值和节点的关系，方便get的时候直接返回
     private Map<Integer, Node> map;
 
+    // 双向链表
     private class Node {
         Node pre = null;
         Node next = null;
@@ -27,6 +32,8 @@ public class LRUCache {
         }
     }
 
+    // 初始化
+    // 将head和tail先连接起来
     public LRUCache(int capacity) {
         this.maxSize = capacity;
         this.map = new HashMap<>(maxSize * 4 / 3);
@@ -36,13 +43,14 @@ public class LRUCache {
         tail.pre = head;
     }
 
+    // get
     public int get(int key) {
         if (!map.containsKey(key)) {
             return -1;
         }
-
         Node node = map.get(key);
-        // 把它和原来的断开连接
+
+        // 访问完之后，需要把它和原来的断开连接
         unLink(node);
 
         // 再把它移动到头结点
@@ -74,6 +82,7 @@ public class LRUCache {
         node.pre = null;
     }
 
+    // put
     public void put(int key, int value) {
         if (map.containsKey(key)) {
             Node node = map.get(key);
@@ -86,6 +95,8 @@ public class LRUCache {
             moveToHead(node);
             map.put(key, node);
 
+            // 超出容量了就删除末尾的节点
+            // 同时记得要删除map中对应的KV
             if (map.size() > maxSize) {
                 Node removedTail = removeTail();
                 map.remove(removedTail.k);

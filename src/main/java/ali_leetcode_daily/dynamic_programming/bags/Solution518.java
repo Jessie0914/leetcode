@@ -1,4 +1,4 @@
-package ali_leetcode_daily.dynamic_programming;
+package ali_leetcode_daily.dynamic_programming.bags;
 
 /**
  * @ClassName Solution518
@@ -57,7 +57,6 @@ public class Solution518 {
         int[] dp = new int[amount + 1];
         dp[0] = 1;
         for (int i = 0; i < coins.length; i++) {
-            // 这需要j从前往后遍历
             // 因为dp[j]的状态与[i-1]和[i]都有关，所以需要从前往后
             for (int j = 1; j < amount + 1; j++) {
                 if (j - coins[i] >= 0)

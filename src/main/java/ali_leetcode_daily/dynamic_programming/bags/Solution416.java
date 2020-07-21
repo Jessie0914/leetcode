@@ -1,4 +1,4 @@
-package ali_leetcode_daily.dynamic_programming;
+package ali_leetcode_daily.dynamic_programming.bags;
 
 /**
  * 416. 分割等和子集
@@ -64,6 +64,7 @@ public class Solution416 {
         dp[0] = true;
         for (int i = 0; i < nums.length; i++) {
             // 内层循环，j逆序！！！
+            // 这里的dp[i]只和dp[i-1]的状态有关
             // 否则，如果正序的话，前面的数据先改变，而后面的数据会用到前面的（这就可能遇上已经改变过的前面的数据），不正确了
             for (int j = sum; j > 0; j--) {
                 if (j>=nums[i])

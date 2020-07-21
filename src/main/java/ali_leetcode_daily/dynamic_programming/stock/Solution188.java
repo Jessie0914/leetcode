@@ -44,7 +44,7 @@ public class Solution188 {
         return dp[len - 1][k][0];
     }
 
-    // 不受次数k限制的情况
+    // 不受次数k限制的情况,k=+infinity
     private int maxProfit(int[] prices) {
         if (prices == null || prices.length < 2)
             return 0;

@@ -5,7 +5,7 @@ import java.util.concurrent.Executors;
 
 /**
  * @ClassName Counter
- * @Description 打印
+ * @Description 100个线程对一个数+1，要求最后输出100
  * @Author shishi
  * @Date 2020/3/13 15:54
  **/

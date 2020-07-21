@@ -1,4 +1,4 @@
-package ali_leetcode_daily.dynamic_programming;
+package ali_leetcode_daily.dynamic_programming.string;
 
 /**
  * 516. 最长回文子序列
