@@ -1,4 +1,4 @@
-package bingfa;
+package bingfa.abc;
 
 /**
  * @Classname ABC
@@ -6,12 +6,12 @@ package bingfa;
  * @Date 2020/7/21 5:20 下午
  * @Created by chiyue
  */
-public class ABC {
+public class ABC_1 {
     // 0的时候打印A，1的时候打印B，2的时候打印C
     static int state = 0;
 
     public static void main(String[] args) {
-        ABC abc = new ABC();
+        ABC_1 abc = new ABC_1();
 
         // 线程1，打印A
         Thread thread1 = new Thread(new Runnable() {
@@ -19,7 +19,7 @@ public class ABC {
             public void run() {
                 for (int i = 0; i < 3; i++) {
                     synchronized (abc) {
-                        if (state != 0) {
+                        while (state != 0) {
                             try {
                                 abc.wait();
                             } catch (InterruptedException e) {
@@ -40,7 +40,7 @@ public class ABC {
             public void run() {
                 for (int i = 0; i < 3; i++) {
                     synchronized (abc) {
-                        if (state != 1) {
+                        while (state != 1) {
                             try {
                                 abc.wait();
                             } catch (InterruptedException e) {
@@ -61,7 +61,7 @@ public class ABC {
             public void run() {
                 for (int i = 0; i < 3; i++) {
                     synchronized (abc) {
-                        if (state != 2) {
+                        while (state != 2) {
                             try {
                                 abc.wait();
                             } catch (InterruptedException e) {

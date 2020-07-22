@@ -1,4 +1,4 @@
-package bingfa;
+package bingfa.odd_even;
 
 /**
  * @ClassName OddAndEven
@@ -20,7 +20,7 @@ public class OddAndEven {
             public void run() {
                 while (even <= 100) {
                     synchronized (oddAndEven) {
-                        if (state == 1) {
+                        while (state == 1) {
                             try {
                                 oddAndEven.wait();
                             } catch (InterruptedException e) {
@@ -41,7 +41,7 @@ public class OddAndEven {
             public void run() {
                 while (odd <= 100) {
                     synchronized (oddAndEven) {
-                        if (state == 0) {
+                        while (state == 0) {
                             try {
                                 oddAndEven.wait();
                             } catch (InterruptedException e) {
