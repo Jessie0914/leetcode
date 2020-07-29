@@ -8,21 +8,20 @@ import java.util.Set;
  * 创建链表时的逻辑我就不管了，那是leetcode服务器里自己写的
  */
 public class Solution160 {
-    public static ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
         // 创建一个hashMap
         Set<ListNode> set = new HashSet<>();
 
         // 遍历第一个链表，把遍历到的结点放到hashMap中
-        while(headA != null) {
+        while (headA != null) {
             set.add(headA);
             headA = headA.next;
         }
         // 然后开始遍历第二个链表，如果在hashMap有对应的结点，说明就是第一个相交的结点
-        while(headB != null) {
-            if(set.contains(headB)) {
+        while (headB != null) {
+            if (set.contains(headB)) {
                 return headB;
-            }
-            else {
+            } else {
                 headB = headB.next;
             }
         }
