@@ -18,14 +18,15 @@ import java.util.List;
 public class Solution103 {
     // 增加一个变量，来控制反转或者不反转，就可以实现锯齿形
     List<List<Integer>> lists = new ArrayList<>();
+
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
-        if (root==null) return lists;
-        helper(root,1);
+        if (root == null) return lists;
+        helper(root, 1);
         int index = 0;
-        for (List list : lists){
-            if (index%2==0){
+        for (List list : lists) {
+            if (index % 2 == 0) {
                 list = list;
-            }else {
+            } else {
                 Collections.reverse(list);
             }
             index++;
@@ -34,11 +35,11 @@ public class Solution103 {
     }
 
     private void helper(TreeNode root, int level) {
-        if (lists.size()<level){
+        if (lists.size() < level) {
             lists.add(new ArrayList<>());
         }
-        lists.get(level-1).add(root.val);
-        if (root.left!=null) helper(root.left,level+1);
-        if (root.right!=null) helper(root.right,level+1);
+        lists.get(level - 1).add(root.val);
+        if (root.left != null) helper(root.left, level + 1);
+        if (root.right != null) helper(root.right, level + 1);
     }
 }

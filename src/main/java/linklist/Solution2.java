@@ -1,6 +1,7 @@
 package linklist;
 
 /**
+ * 两数相加
  * 题目要求：
  * 给出两个 非空 的链表用来表示两个非负的整数。其中，它们各自的位数是按照 逆序 的方式存储的，并且它们的每个节点只能存储 一位 数字。
  * 如果，我们将这两个数相加起来，则会返回一个新的链表来表示它们的和。
@@ -32,47 +33,28 @@ public class Solution2 {
     }
 
     public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        // 进位
+        ListNode pre = new ListNode(0);
+        ListNode cur = pre;
         int carry = 0;
+        while (l1 != null || l2 != null) {
+            int x = l1 == null ? 0 : l1.val;
+            int y = l2 == null ? 0 : l2.val;
+            int sum = x + y + carry;
 
-        // 定义一个虚假的头结点
-        ListNode head = new ListNode(0);
+            carry = sum / 10;
+            sum = sum % 10;
+            cur.next = new ListNode(sum);
 
-        // 定义当前的结点，每次计算一个就把当前节点向后移动
-        ListNode currentNode = new ListNode(0);
-
-        // 先将创建好的两个结点连接起来
-        head.next = currentNode;
-
-        while (l1 != null || l2 != null || carry != 0) {
-            int sum = 0;
-            if (l1 != null) {
-                sum += l1.val;
+            cur = cur.next;
+            if (l1 != null)
                 l1 = l1.next;
-            }
-            // 如果我加上else{l1.val=0} [5][5]的测试用例就会内存报错，其实不加这段就可以
-            if (l2 != null) {
-                sum += l2.val;
+            if (l2 != null)
                 l2 = l2.next;
-            }
-            sum += carry;
-            if (sum >= 10) {
-                carry = 1;
-            } else {
-                carry = 0;
-            }
-            int result = sum % 10;
-            //将结果填入创建好的当前节点
-            currentNode.val = result;
-
-            // 接下来再创建一个新的结点，继续后面的操作
-            // 但是创建之前先要判断一下，否则就会多出一个结点
-            if (l1 != null || l2 != null || carry != 0) {
-                currentNode.next = new ListNode(0);
-                currentNode = currentNode.next;
-            }
         }
-        return head.next;
+        if (carry == 1) {
+            cur.next = new ListNode(carry);
+        }
+        return pre.next;
     }
 }
 

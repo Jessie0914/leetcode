@@ -24,7 +24,7 @@ public class Solution199 {
         // 每次层序遍历之后，只添加层序遍历的最后一个元素
         List<Integer> resultList = new ArrayList<>();
 
-        // 定义两个栈，是用来存放当前节点，以及当前节点的左子树和右子树的
+        // 定义两个队列，是用来存放当前节点，以及当前节点的左子树和右子树的
         Queue<TreeNode> current = new LinkedList<>();
         Queue<TreeNode> next = new LinkedList<>();
 
