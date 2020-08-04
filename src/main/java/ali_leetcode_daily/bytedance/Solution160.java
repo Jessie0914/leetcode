@@ -2,7 +2,7 @@ package ali_leetcode_daily.bytedance;
 
 /**
  * @ClassName Solution160
- * @Description
+ * @Description 编写一个程序，找到两个单链表相交的起始节点。
  * @Author shishi
  * @Date 2020/7/28 22:26
  **/

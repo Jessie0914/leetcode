@@ -12,7 +12,7 @@ package ali_leetcode_daily.bytedance;
  * 当 k = 2 时，应当返回: 2->1->4->3->5
  * 当 k = 3 时，应当返回: 3->2->1->4->5
  */
-// LC_MARK
+// LC_MARK（https://leetcode-cn.com/problems/reverse-nodes-in-k-group/solution/di-gui-java-by-reedfan-2/）
 public class Solution25 {
     public ListNode reverseKGroup(ListNode head, int k) {
         if (head == null || head.next == null)

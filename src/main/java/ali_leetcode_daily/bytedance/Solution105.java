@@ -2,7 +2,7 @@ package ali_leetcode_daily.bytedance;
 
 /**
  * @ClassName Solution105
- * @Description
+ * @Description 从前序与中序遍历序列构造二叉树
  * @Author shishi
  * @Date 2020/7/28 22:55
  **/

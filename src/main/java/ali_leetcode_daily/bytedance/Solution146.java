@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 /**
  * @ClassName Solution146
- * @Description
+ * @Description LRU缓存机制
  * @Author shishi
  * @Date 2020/7/28 21:38
  **/
@@ -22,6 +22,7 @@ public class Solution146 {
         }
     }
 
+    // 双向链表+map
     Node head = null;
     Node tail = null;
     HashMap<Integer, Node> map = new HashMap<>();
